@@ -1,0 +1,21 @@
+{
+    "name": "baba/php-string-convert",
+    "description": "Convert string from utf-8 to windows-1250",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "BABA\\Utils\\": "src/"
+        }
+    },
+    "provide": {
+        "baba/php-string-convert": "1.0.0.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Juraj Puchký",
+            "email": "info@baba.bj"
+        }
+    ],
+    "minimum-stability": "dev"
+}
