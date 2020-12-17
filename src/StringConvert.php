@@ -12,46 +12,74 @@ namespace BABA\Utils;
 class StringConvert
 {
 
+    public static function charactersCP1250UTF8()
+    {
+        return
+            [
+                "c1" => "c381", // Á
+                "c9" => "c389", // É
+                "cc" => "c49a", // Ě
+                "cd" => "c38d", // Í
+                "dd" => "c39d", // Ý
+                "d3" => "c393", // Ó
+                "da" => "c39a", // Ú
+                "d9" => "c5ae", // Ů
+                "c4" => "c384", // Ä
+                "c5" => "c4b9", // Ĺ
+                "bc" => "c4bd", // Ľ
+                "d4" => "c394", // Ô
+                "8e" => "c5bd", // Ž
+                "8a" => "c5a0", // Š
+                "c8" => "c48c", // Č
+                "d8" => "c598", // Ř
+                "cf" => "c48e", // Ď
+                "8d" => "c5a4", // Ť
+                "d2" => "c587", // Ň
+                "e1" => "c3a1", // á
+                "e9" => "c3a9", // é
+                "ec" => "c49b", // ě
+                "ed" => "c3ad", // í
+                "fd" => "c3bd", // ý
+                "f3" => "c3b3", // ó
+                "fa" => "c3ba", // ú
+                "f9" => "c5af", // ů
+                "e4" => "c3a4", // ä
+                "e5" => "c4ba", // ĺ
+                "be" => "c4be", // ľ
+                "f4" => "c3b4", // ô
+                "9e" => "c5be", // ž
+                "9a" => "c5a1", // š
+                "e8" => "c48d", // č
+                "f8" => "c599", // ř
+                "ef" => "c48f", // ď
+                "9d" => "c5a5", // ť
+                "f2" => "c588", // ň
+            ];
+    }
+    
     /**
      * @param $str String which will be converted
      * @return string
      */
     public static function utf8ToWindows1250($str) {
-        $str = str_replace('Ăˇ','á',$str);
-        $str = str_replace('Ă©','é',$str);
-        $str = str_replace('Ä›','ě', $str);
-        $str = str_replace('Ă­','í',$str);
-        $str = str_replace('Ă˝','ý',$str);
-        $str = str_replace('Ăł','ó',$str);
-        $str = str_replace('Ăş','ú',$str);
-        $str = str_replace('ĹŻ','ů',$str);
 
-        $str = str_replace('Ĺľ','ž',$str);
-        $str = str_replace('Ĺˇ','š',$str);
-        $str = str_replace('ÄŤ','č',$str);
-        $str = str_replace('Ĺ™','ř',$str);
-        $str = str_replace('ÄŹ','ď',$str);
-        $str = str_replace('ĹĄ','ť',$str);
-        $str = str_replace('Ĺ?','ň',$str);
-
-        $str = str_replace('Ă?','Á',$str);
-        $str = str_replace('Ă‰','É',$str);
-        $str = str_replace('Äš','Ě', $str);
-        $str = str_replace('ĂŤ','Í',$str);
-        $str = str_replace('Ăť','Ý',$str);
-        $str = str_replace('Ă“','Ó',$str);
-        $str = str_replace('Ăš','Ú',$str);
-        $str = str_replace('Ĺ®','Ů',$str);
-
-        $str = str_replace('Ĺ˝','Ž',$str);
-        $str = str_replace('Ĺ ','Š',$str);
-        $str = str_replace('ÄŚ','Č',$str);
-        $str = str_replace('Ĺ?','Ř',$str);
-        $str = str_replace('ÄŽ','Ď',$str);
-        $str = str_replace('Ĺ¤','Ť',$str);
-        $str = str_replace('Ĺ‡','Ň',$str);
-
+        foreach (self::charactersCP1250UTF8() as $windows1250 => $utf8) {
+            $str = str_replace(hex2bin($utf8), hex2bin($windows1250), $str);
+        }
         return $str;
+    }
+
+    /**
+     * @param $str String which will be converted
+     * @return string
+     */
+    public static function windows1250ToUtf8($str)
+    {
+        foreach (self::charactersCP1250UTF8() as $windows1250 => $utf8) {
+            $str = str_replace(hex2bin($windows1250), hex2bin($utf8), $str);
+        }
+        return $str;
+
     }
 
 }
