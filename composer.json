@@ -8,7 +8,7 @@
         }
     },
     "provide": {
-        "baba/php-string-convert": "1.0.1"
+        "baba/php-string-convert": "1.0.2"
     },
     "license": "MIT",
     "authors": [
