@@ -8,7 +8,7 @@
         }
     },
     "provide": {
-        "baba/php-string-convert": "1.0.2"
+        "baba/php-string-convert": "1.0.3"
     },
     "license": "MIT",
     "authors": [
@@ -17,5 +17,8 @@
             "email": "info@baba.bj"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require": {
+        "ext-mbstring": "*"
+    }
 }

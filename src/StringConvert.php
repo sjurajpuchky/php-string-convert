@@ -12,7 +12,7 @@ namespace BABA\Utils;
 class StringConvert
 {
 
-    public static function charactersCP1250UTF8()
+    public static function charactersWINDOWS1250UTF8()
     {
         return
             [
@@ -71,11 +71,14 @@ class StringConvert
      * @return string
      */
     public static function utf8ToWindows1250($str) {
-
-        foreach (self::charactersCP1250UTF8() as $windows1250 => $utf8) {
-            $str = str_replace(hex2bin($utf8), hex2bin($windows1250), $str);
+        $codePage = array_flip(self::charactersWINDOWS1250UTF8());
+        $ret = '';
+        $len = mb_strlen($str,"UTF-8");
+        for($i=0;$i<$len;$i++) {
+            $charUTF8 = mb_substr($str,$i,1,"UTF-8");
+            $ret .= isset($codePage[bin2hex($charUTF8)]) ? $codePage[bin2hex($charUTF8)] : bin2hex($charUTF8);
         }
-        return $str;
+        return hex2bin($ret);
     }
 
     /**
@@ -84,11 +87,14 @@ class StringConvert
      */
     public static function windows1250ToUtf8($str)
     {
-        foreach (self::charactersCP1250UTF8() as $windows1250 => $utf8) {
-            $str = str_replace(hex2bin($windows1250), hex2bin($utf8), $str);
+        $codePage = self::charactersWINDOWS1250UTF8();
+        $ret = '';
+        $len = strlen($str);
+        for($i=0;$i<$len;$i++) {
+            $charW1250 = substr($str,$i,1);
+            $ret .= isset($codePage[bin2hex($charW1250)]) ? $codePage[bin2hex($charW1250)] : bin2hex($charW1250);
         }
-        return $str;
-
+        return hex2bin($ret);
     }
 
 }
