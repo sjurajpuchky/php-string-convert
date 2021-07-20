@@ -62,7 +62,7 @@ class StringConvert
                 "dc" => "c39c", // Ü
                 "b0" => "c2b0",
                 'df' => "c39f",
-                "96" => "002d"
+                "96" => "2d"
             ];
 
     }
