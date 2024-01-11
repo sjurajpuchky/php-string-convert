@@ -62,13 +62,14 @@ class StringConvert
                 "dc" => "c39c", // Ü
                 "b0" => "c2b0",
                 'df' => "c39f",
+                "96" => "2d", // -
                 "e0" => "c595", // ŕ
                 "c0" => "c594", // Ŕ
                 "b4" => "c2b4" // ´
             ];
 
     }
-    
+
     /**
      * @param $str String which will be converted
      * @return string
