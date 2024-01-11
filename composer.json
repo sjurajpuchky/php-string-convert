@@ -7,9 +7,6 @@
             "BABA\\Utils\\": "src/"
         }
     },
-    "provide": {
-        "baba/php-string-convert": "1.0.5"
-    },
     "license": "MIT",
     "authors": [
         {
